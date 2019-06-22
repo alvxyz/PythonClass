@@ -4,6 +4,9 @@ ketemu = False
 key = int(input("Masukkan key ingin dicari: "))
 perbandingan = 0
 
+# Mengurutkan data
+A.sort()
+
 # pecarian
 while not ketemu and (i < len(A)):
 
