@@ -4,7 +4,7 @@ ketemu = False
 key = 5
 perbandingan = 0
 
-while not ketemu and (i < len(A)):
+while i < len(A) and not ketemu:
     perbandingan += 1
     if A[i] == key:
         ketemu = True
