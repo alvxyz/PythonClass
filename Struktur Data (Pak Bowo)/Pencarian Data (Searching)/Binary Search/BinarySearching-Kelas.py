@@ -1,8 +1,10 @@
 # 24 Juni 2019
 
-A = [1, 3, 5, 7, 9, 11, 13, 15]
+A = [12, 15, 7, 10, 25, 2, 17, 25, 5, 20]
+A.sort()
 
-key = 11
+print(A)
+key = 5
 
 L = 0
 R = len(A) - 1
@@ -12,17 +14,17 @@ ketemu = False
 
 while L <= R and not ketemu:
     perulangan += 1
-    m = (L + R) // 2
-    if A[m] == key:
+    middle = (L + R) // 2
+    if A[middle] == key:
         ketemu = True
     else:
-        if key < A[m]:
-            R = m - 1
+        if key < A[middle]:
+            R = middle - 1
         else:
-            L = m + 1
+            L = middle + 1
 
 if ketemu is True:
-    print("Maka data", key, "ada di indeks", m)
+    print("Data", key, "ada di indeks", middle)
 else:
     print("Data tidak ditemukan")
 
