@@ -8,6 +8,7 @@ key = int(input("Masukkan key yang ingin dicari: "))
 L = 0
 R = len(A) - 1
 perulangan = 0
+middle = 0
 
 ketemu = False
 
@@ -16,11 +17,11 @@ while L <= R and not ketemu:
     middle = (L + R) // 2
     if A[middle] == key:
         ketemu = True
+    elif key < A[middle]:
+        R = middle - 1
     else:
-        if key < A[middle]:
-            R = middle - 1
-        else:
-            L = middle + 1
+        L = middle + 1
+
 
 if ketemu is True:
     print("Maka data", key, "ada di indeks", middle)

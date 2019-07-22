@@ -1,4 +1,5 @@
 A = [int(s) for s in input("Masukkan Data (Pisah dengan Spasi): ").split()]
+
 i = 0
 ketemu = False
 key = int(input("Masukkan key ingin dicari: "))
@@ -8,17 +9,15 @@ perbandingan = 0
 A.sort()
 
 # pecarian
-while not ketemu and (i < len(A)):
 
+while i < len(A) and not ketemu:
     perbandingan += 1
-
     if A[i] == key:
         ketemu = True
     elif A[i] > key:
         break
     else:
         i += 1
-        # i = i + 1
 
 print("Jumlah perbandingannya : ", perbandingan)
 
