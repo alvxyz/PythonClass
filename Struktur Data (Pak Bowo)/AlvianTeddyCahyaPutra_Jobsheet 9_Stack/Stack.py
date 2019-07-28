@@ -43,23 +43,28 @@ mystack = Stack(10)
 # for x in range(5, 1005, 5):
 #     mystack.push(x)
 
-while (not mystack.is_full()):
-    angka_random = random.randrange(0, 100, 5)
+print("===Memasukkan angka ke dalam stack===")
+
+while not mystack.is_full():
+    angka_random = random.randrange(0, 10)
     print(f"Memasukkan {angka_random} ke dalam Stack")
     time.sleep(0.2)
     mystack.push(angka_random)
-
 
 # melakukan penghapusan data dan nilai indeksnya dimulai dari -1
 # mystack.clear()
 
 
-mystack.push(100)
+# mystack.push(12)
 print("Indeks top sekarang berada di", mystack.peek_top())
 
+print()
+
+print("===Mengeluarkan angka ke dalam stack===")
 while not mystack.is_empty():
     print("Data yang diambil", mystack.pop())
 
-
-
 # print("Indeks top sekarang berada di", mystack.peek_top())
+print("Indeks top sekarang berada di", mystack.peek_top())
+
+
