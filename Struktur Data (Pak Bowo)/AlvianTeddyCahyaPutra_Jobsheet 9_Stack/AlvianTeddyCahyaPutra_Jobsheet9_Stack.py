@@ -1,6 +1,5 @@
 import statistics
 
-
 class Stack:
     # Variabel Global
     stack_list = []
