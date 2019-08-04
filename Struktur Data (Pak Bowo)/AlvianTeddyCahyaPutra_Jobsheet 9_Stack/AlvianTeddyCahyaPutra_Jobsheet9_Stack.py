@@ -12,10 +12,12 @@ class Stack:
         self.stack_list = [0] * size
         self.top = -1
 
+    # menambahkan data
     def push(self, x):
         self.top += 1
         self.stack_list[self.top] = x
 
+    # mengambil data teratas
     def pop(self):
         dummy = self.stack_list[self.top]
         self.top -= 1
