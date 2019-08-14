@@ -5,7 +5,7 @@ class ayam:
     species = "Bird"
     # menginisiasi / instance Attributes
 
-    def __init__(self)(self, name, age):
+    def __init__(self, name, age):
         self.name = name
         self.age = age
 
