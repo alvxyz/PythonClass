@@ -7,6 +7,7 @@ class Stack:
     def __init__(self):
         max_size = 20
         self.stack_list = [" "] * max_size
+        self.redo = [0] * max_size
         self.top = -1
 
     def push(self, perintah):
@@ -34,11 +35,10 @@ class Stack:
         return self.pop()
 
 
-
 import time
 
-def mainprogram():
 
+def mainprogram():
     photoshop = Stack()
     quit = False
 
@@ -48,7 +48,7 @@ def mainprogram():
         - Blur = Menghilangkan fokus objek
         - Crop = Memotong Objek
         - Undo = Mengembalikan proses sebelumnya
-        
+
         - Delete = Menghapus layer / efek
         - Quit = Keluar dari program
         - History = Menampilkan perintah yang telah di buat
