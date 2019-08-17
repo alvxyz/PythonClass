@@ -5,10 +5,15 @@ class Stack:
 
     def __init__(self):
         max_size = 20
-        self.stack_list = [" "] * max_size
+        self.stack_list = [0] * max_size
         self.top = -1
 
+    # def push(self, perintah):
+    #     self.top += 1
+    #     self.stack_list[self.top] = perintah
+
     def push(self, perintah):
+        # if not self.is_full():
         self.top += 1
         self.stack_list[self.top] = perintah
 
@@ -27,18 +32,33 @@ class Stack:
         return self.stack_list[self.top]
 
     def histori(self):
-        i = 0
-        while self.stack_list:
-            # print(self.stack_list[i])
-            return self.stack_list[i]
+        for i in range(0, len(self.stack_list)):
+            print(self.stack_list[i])
+
+
+    def redo(self):
+        temp = self.stack_list[self.top + 1]
+        self.top += 1
+        return temp
 
 
 photoshop = Stack()
 
-photoshop.push("Blur")
-photoshop.push("Crop")
-photoshop.push("Delete")
+# print(photoshop.top)
+photoshop.push(10)
+photoshop.push(10)
+photoshop.push(10)
 
-print(photoshop.pop())
+
+print(photoshop.top)
+
 print(photoshop.histori())
-print(photoshop.peek_top())
+# print(len(photoshop.stack_list))
+# for i in range(1, 22):
+#     print(photoshop.push(str(i)))
+
+# print(photoshop[photoshop.top])
+
+# print(photoshop.pop())
+# print(photoshop.histori())
+# print(photoshop.peek_top())

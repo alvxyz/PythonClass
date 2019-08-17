@@ -5,7 +5,7 @@ class Stack:
     top = 0
 
     def __init__(self):
-        max_size = 20
+        max_size = 3
         self.stack_list = [" "] * max_size
         self.redo = [0] * max_size
         self.top = -1
@@ -32,7 +32,9 @@ class Stack:
         return self.stack_list
 
     def redo(self):
-        return self.pop()
+        temp = self.stack_list[self.top]
+        self.top -= 1
+        return temp
 
 
 import time
@@ -59,8 +61,11 @@ def mainprogram():
         perintah = input("Photoshop > ".lower())
 
         if perintah == "blur":
-            photoshop.push(perintah)
-            print("Mengaktifkan Blur, objek Anda akan kehilangan Fokus")
+            if not photoshop.is_full():
+                photoshop.push(perintah)
+                print("Mengaktifkan Blur, objek Anda akan kehilangan Fokus")
+            else:
+                print("Maaf Perintah Melewati batas maksimal")
         elif perintah == "crop":
             photoshop.push(perintah)
             print("Memotong objek yang telah di pilih")

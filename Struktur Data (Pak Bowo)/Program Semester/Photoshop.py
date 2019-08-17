@@ -4,12 +4,13 @@ class Stack:
     max_size = 0
     top = 0
 
-    def __init__(self):
-        max_size = 20
-        self.stack_list = [" "] * max_size
+    def __init__(self, size):
+        self.max_size = size
+        self.stack_list = [" "] * self.max_size
         self.top = -1
 
     def push(self, perintah):
+        # if not self.is_full():
         self.top += 1
         self.stack_list[self.top] = perintah
 
@@ -28,55 +29,76 @@ class Stack:
         return self.stack_list[self.top]
 
     def histori(self):
-        return self.stack_list
+        print("History: ")
+        for i in range(0, self.top + 1):
+            print(self.stack_list[i].capitalize(), end=" ")
+        print()
 
     def redo(self):
-        return self.pop()
-
+        temp = self.stack_list[self.top + 1]
+        self.top += 1
+        return temp
 
 
 import time
 
+
 def mainprogram():
+    photoshop = Stack(20)
+    Quit = False
 
-    photoshop = Stack()
-    quit = False
+    print("""         
+    Welcome to the Photoshop.
+    Your Photoshop version is CC 2019
+    Copyright (c) 2019, Alvian, Alvxyz Corporation and others.
 
-    print(""" =========PROGRAM PHOTOSHOP SEDERHANA============
-
-        List Perintah yang dapat digunakan
-        - Blur = Menghilangkan fokus objek
-        - Crop = Memotong Objek
-        - Undo = Mengembalikan proses sebelumnya
-        
-        - Delete = Menghapus layer / efek
-        - Quit = Keluar dari program
-        - History = Menampilkan perintah yang telah di buat
-        """)
+    List perintah yang dapat digunakan
+    
+    - Blur = Menghilangkan fokus objek
+    - Crop = Memotong Objek
+    - Undo = Mengembalikan proses sebelumnya
+    - Delete = Menghapus layer / efek
+    - History = Menampilkan perintah yang telah di buat
+    - Quit = Keluar dari program
+    """)
 
     while not quit:
 
-        perintah = input("Photoshop > ".lower())
+        perintah = input("Photoshop [CC 2019] > ")
 
         if perintah == "blur":
-            photoshop.push(perintah)
-            print("Mengaktifkan Blur, objek Anda akan kehilangan Fokus")
-        elif perintah == "crop":
-            photoshop.push(perintah)
-            print("Memotong objek yang telah di pilih")
-        elif perintah == "delete":
-            photoshop.push(perintah)
-            print("Menghapus objek yang dipilih")
-        elif perintah == "undo":
             if not photoshop.is_full():
+                photoshop.push(perintah)
+                print("Mengaktifkan Blur, objek Anda akan kehilangan Fokus")
+            else:
+                print("Maaf Perintah Melewati batas maksimal")
+
+        elif perintah == "crop":
+            if not photoshop.is_full():
+                photoshop.push(perintah)
+                print("Memotong objek yang telah di pilih")
+            else:
+                print("Maaf Perintah Melewati batas maksimal")
+
+        elif perintah == "delete":
+            if not photoshop.is_full():
+                photoshop.push(perintah)
+                print("Menghapus objek yang dipilih")
+            else:
+                print("Maaf Perintah Melewati batas maksimal")
+
+        elif perintah == "undo":
+            if photoshop.is_empty():
+                print("Tidak ada perintah yang tersedia untuk di Undo")
+            elif not photoshop.is_full():
                 print("Perintah", photoshop.peek_top().capitalize(), "dibatalkan")
                 photoshop.pop()
-            else:
-                print("Tidak ada perintah yang tersedia untuk di Undo")
+
         elif perintah == "history":
-            print(photoshop.histori())
+            photoshop.histori()
+
         elif perintah == "quit":
-            quit = True
+            Quit = True
             time.sleep(1.5)
             print("""
             ====== Terima Kasih telah menggunakan Program Photoshop Sederhana ini ======
