@@ -51,39 +51,18 @@ class Printer:
         self.rear = -1
         self.n_items = 0
 
+    # menampilkan isi antrian
     def list(self):
         print("List antrian: ")
-        for i in range(0, self.rear + 1):
-            print(self.q_list[i], end=" ")
-        print()
-
-    def hapus_data(self):
-        x = int(input("Masukkan data yang akan dihapus: "))
-        self.q_list.remove(x)
-        return self.q_list
-
-    def cari_data(self):
-
-        i = 0
-        ketemu = False
-        key = int(input("Masukkan angka yang dicari: "))
-        while i < len(self.q_list) and not ketemu:
-            if self.q_list[i] == key:
-                ketemu = True
-            elif self.q_list[i] > key:
-                break
-            else:
-                i += 1
-
-        if ketemu:
-            print("Data", key, "yang dicari berada di indeks: ", i)
-            return self.q_list.index(key)
+        if self.is_empty():
+            print("Tidak ada antrian yang berlangsung")
         else:
-            print("Data tidak ditemukan")
+            for i in range(self.front, self.rear + 1):
+                print("-", self.q_list[i])
 
 
 def mainProgram():
-    printer = Printer(10)
+    printer = Printer(20)
     Quit = False
 
     print("""
@@ -98,29 +77,33 @@ def mainProgram():
     - Done = Menyelesaikan proses dokumen pertama di antrian
     - Quit = Keluar dari program 
     
+    Note : Batas maksimal antrian = 20
+    
     """)
 
     while not Quit:
 
         perintah = input("Printer Center [v 3.9] > ")
 
-        if not printer.is_full():
-            if perintah == "print":
+        if perintah == "print":
+            if not printer.is_full():
                 nama_dokumen = input("Masukkan nama dokumen: ")
                 printer.enqueue(nama_dokumen)
                 print("Memasukkan", nama_dokumen, "ke dalam antrian")
-            elif perintah == "list":
-                printer.list()
-            elif perintah == "done":
-                print(printer.peekfront(), "telah selesai di cetak")
-                printer.dequeue()
-            elif perintah == "quit":
-                Quit = True
-                print("""
-                ====== Terima Kasih telah menggunakan Program Printer Sederhana ini ======
-                """)
             else:
-                print("Perintah tidak dikenali")
+                print("Maaf perintah telah mencapai batas")
+        elif perintah == "list":
+            printer.list()
+        elif perintah == "done":
+            print(printer.peekfront(), "telah selesai di cetak")
+            printer.dequeue()
+        elif perintah == "quit":
+            Quit = True
+            print("""
+            ====== Terima Kasih telah menggunakan Program Printer Sederhana ini ======
+            """)
+        else:
+            print("Perintah tidak dikenali")
 
 
 mainProgram()
