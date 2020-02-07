@@ -9,7 +9,7 @@ class Stack:
     def __init__(self, size):
         self.max_size = size
         self.stack_list = [0] * self.max_size
-        # nilai top -1 dikarenakan slot tumpukan pertama [indeks 0} belum di isi
+        # nilai top -1 dikarenakan slot tumpukan pertama [indeks 0] belum di isi
         self.top = -1
 
     def push(self, perintah):
@@ -102,7 +102,7 @@ def mainprogram():
         elif perintah == "quit":
             Quit = True
             time.sleep(1.5)
-            print("""
+            print(""" 
             ====== Terima Kasih telah menggunakan Program Photoshop Sederhana ini ======
             """)
         else:
